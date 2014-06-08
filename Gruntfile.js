@@ -380,7 +380,7 @@ module.exports = function (grunt) {
     connect: {
       build: {
         options: {
-          port: 9001,
+          port: 9000,
           base: '<%= build_dir  %>',
           keepalive: true,
           livereload: true
