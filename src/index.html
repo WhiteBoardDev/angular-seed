@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html ng-app="angularSeed" ng-controller="AppCtrl">
-  <head>
+<head>
     <title ng-bind="pageTitle"></title>
-
-    <!-- inspired by @joshdmiller -->
-    <!-- from ngBoilerplate -->
-    <!-- Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects:  -->
-    <!-- a best-practice directory structure, an intelligent build system, and the best web design libraries around. -->
-    <!-- http://bit.ly/ngBoilerplate" -->
-
-
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>"/>
+    <% }); %>
 
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+    <script type="text/javascript" src="<%= file %>"></script>
+    <% }); %>
 
-  </head>
-  <body>
-    
-    <div class="container">
-      <header ui-view="header"></header>
-      <main ui-view="main"></main>
-      <footer ui-view="footer"></footer>
-    </div>
+</head>
+<body>
 
-  </body>
+<header ui-view="header"></header>
+<main ui-view="main"></main>
+<footer ui-view="footer"></footer>
+
+</body>
 </html>

@@ -30,7 +30,7 @@ module.exports = {
     ctpl:       [ 'src/common/**/*.tpl.html' ],
 
     html:       [ 'src/index.html' ],
-    less:       [ 'src/less/**/*.less', 'src/**/*.less' ]
+    less:       [ 'src/**/*.less' ]
   },
 
   /**
@@ -62,13 +62,8 @@ module.exports = {
    */
   vendor_files: {
     js: [
-      //  'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js'
-      //'bower_components/bootstrap/js/modal.js',
-      //'bower_components/bootstrap/js/collapse.js',
-      //'bower_components/bootstrap/js/dropdown.js',
-      //'bower_components/bootstrap/js/transition.js'
     ],
     css: [
     ],

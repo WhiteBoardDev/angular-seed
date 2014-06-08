@@ -181,10 +181,9 @@ module.exports = function (grunt) {
       },
       compile_dir: {
         src: [
-          '<%= build_dir %>/assets/**/*.css',
-          '<%= build_dir %>/assets/**/*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= build_dir %>/src/**/*.js',
-          '<%= build_dir %>/fonts/*'
+          '<%= compile_dir %>/assets/**/*.css',
+          '<%= compile_dir %>/assets/**/*.js',
+          '<%= compile_dir %>/fonts/*'
         ]
       }
     },
@@ -332,9 +331,9 @@ module.exports = function (grunt) {
       compile: {
         dir: '<%= compile_dir %>',
         src: [
-          '<%= concat.compile_js.dest %>',
+          '<%= compile_dir %>/assets/**/*.js',
           '<%= vendor_files.css %>',
-          '<%= recess.compile.dest %>'
+          '<%= compile_dir %>/assets/**/*.css'
         ]
       }
     },
@@ -390,8 +389,7 @@ module.exports = function (grunt) {
         options: {
           port: 9001,
           base: '<%= compile_dir  %>',
-          keepalive: true,
-          livereload: true
+          keepalive: true
         }
       }
     },
@@ -517,7 +515,7 @@ module.exports = function (grunt) {
    */
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['compile', 'connect:dist']);
+      return grunt.task.run(['build', 'compile', 'connect:dist']);
     }
 
     grunt.task.run([
@@ -530,7 +528,6 @@ module.exports = function (grunt) {
    * minifying your code.
    */
   grunt.registerTask('compile', [
-    'build',
     'clean:compile',
     'recess:compile',
     'concurrent:copy_compile',
