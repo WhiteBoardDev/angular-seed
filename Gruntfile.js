@@ -351,7 +351,13 @@ module.exports = function (grunt) {
       copy_compile: [
         'copy:compile_fonts',
         'copy:compile_assets'
-      ]
+      ],
+      serve: {
+        tasks: ['watch','connect:build'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     },
 
     /**
@@ -372,10 +378,18 @@ module.exports = function (grunt) {
 
     // Connect creates a local web server
     connect: {
-      server: {
+      build: {
         options: {
           port: 9001,
           base: '<%= build_dir  %>',
+          keepalive: true,
+          livereload: true
+        }
+      },
+      dist: {
+        options: {
+          port: 9001,
+          base: '<%= compile_dir  %>',
           keepalive: true,
           livereload: true
         }
@@ -498,6 +512,19 @@ module.exports = function (grunt) {
     'karma:unit'
   ]);
 
+  /*
+  * Serve spins up your development environment in one command
+   */
+  grunt.registerTask('serve', function (target) {
+    if (target === 'dist') {
+      return grunt.task.run(['compile', 'connect:dist']);
+    }
+
+    grunt.task.run([
+      'concurrent:serve'
+    ]);
+
+  });
   /**
    * The `compile` task gets your app ready for deployment by concatenating and
    * minifying your code.
